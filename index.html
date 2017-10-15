@@ -8,5 +8,28 @@
     <script src="src/js/registration.js"></script>    
   </head>
   <body>
-  </body>
+    <div class="container">
+      <form id="form-registration" role="form">
+        <div class="form-registration__step">
+          <input type="text" class="form-control" id="login" required placeholder="Логин">
+          <input type="text" class="form-control" id="email" required placeholder="E-mail">
+          <input type="password" class="form-control" id="password" required placeholder="Пароль">
+        </div>
+        <div class="form-registration__step">
+          <input type="text" class="form-control" id="name" required placeholder="Имя">
+          <input type="text" class="form-control" id="sname" required placeholder="Фамилия">
+          <input type="text" class="form-control" id="age" required placeholder="Возраст">
+        </div>
+        <div class="form-registration__step">
+          <input type="text" class="form-control" id="country" required placeholder="Страна">
+          <input type="text" class="form-control" id="city" required placeholder="Город">
+          <input type="text" class="form-control" id="street" required placeholder="Улица">
+        </div>
+        <p class=form_registration__button>
+            <a href="#" class="back">Назад</a>
+            <a href="#" class="next">Далее</a>
+            <input type="submit" value="Зарегестрироваться">
+        </p>
+      </form>  
+    </div>
 </html>

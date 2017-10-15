@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+.form-registration__step {
+    display:none;
+}
+
+a.back {
+    display:none;
+}
+
+form input[type=submit] {
+    display:none;
+}
+
+
+	
+	
+	
+	
