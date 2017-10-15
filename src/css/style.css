@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 body {
     margin: 0;
+    font-family: 'Comfortaa', cursive;
+    height: 100vh;
+    background: linear-gradient(rgb(13, 202, 171),#26ABE4);
 }
 
 .form-registration__step {
@@ -14,8 +18,23 @@ form input[type=submit] {
     display:none;
 }
 
+.container{
+    width: 400px;
+    height: 500px;
+    margin: auto; 
+    padding-top: 15%;
+}
 
-	
-	
-	
+.form-registration__step input{
+    text-align: center;
+}
+
+.form_registration__buttons {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.form_registration__button-registration {
+    text-align: center;
+}
 	

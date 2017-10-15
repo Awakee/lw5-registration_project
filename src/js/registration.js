@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+  //функция переключения форм.
   var currentStep = 0;
   var step = $("form").children(".form-registration__step");
   $(step[0]).show();
@@ -14,18 +16,27 @@ $(document).ready(function(){
   
   
   $("a.back").click(function() {
-    if(currentStep == 1) {
-      $(this).hide()
-    }
-    $("form input[type=submit]").hide();
-    $("a.next").show();
-    currentStep--;
-    changeStep(currentStep);
+  if(currentStep == 1) {
+    $(this).hide()
+  }
+  $("form input[type=submit]").hide();
+  $("a.next").show();
+  currentStep--;
+  changeStep(currentStep);
   });
-  
+
   function changeStep(i) {
     $(step).hide();
     $(step[i]).show();
   }
 
+
+  //функция для проверки ввода.
+
+  $('#form-registration').submit(function(event){
+    event.preventDefault;
+    
+    alert("Registration completed");
+
+  });
 });
