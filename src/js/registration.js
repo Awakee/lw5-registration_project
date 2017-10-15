@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   //функция переключения форм.
   var currentStep = 0;
   var step = $("form").children(".form-registration__step");
@@ -34,9 +33,19 @@ $(document).ready(function(){
   //функция для проверки ввода.
 
   $('#form-registration').submit(function(event){
+    var login = $("#login").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var name = $("#name").val();
+    var sname = $("#sname").val();
+    var age = $("#age").val();
+    var country = $("#country").val();
+    var city = $("#city").val();
+    var street = $("#street").val();
+    var emailCheck = (/[^\s@]+@[^\s@]+\.[^\s@]+/.test(email));
     event.preventDefault;
     
-    alert("Registration completed");
 
+    alert("Registration completed");
   });
 });
