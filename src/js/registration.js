@@ -28,18 +28,38 @@ $(document).ready(function(){
     $(step[i]).show();
   }
 
+  login = $("#login").val(localStorage.getItem('storageLogin'));
+  email = $("#email").val(localStorage.getItem('storageEmail'));
+  password = $("#password").val(localStorage.getItem('storagePassword'));
+  name = $("#name").val(localStorage.getItem('storageName'));
+  sname = $("#sname").val(localStorage.getItem('storageSname'));
+  age = $("#age").val(localStorage.getItem('storageAge'));
+  country = $("#country").val(localStorage.getItem('storageCountry'));
+  city = $("#city").val(localStorage.getItem('storageCity'));
+  street = $("#street").val(localStorage.getItem('storageStreet'));
+
   $('#form-registration').submit(function(event){
-    var login = $("#login").val();//
-    var email = $("#email").val();//
-    var password = $("#password").val();//
-    var name = $("#name").val();//
-    var sname = $("#sname").val();//
-    var age = $("#age").val();//
-    var country = $("#country").val();//
+    var login = $("#login").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var name = $("#name").val();
+    var sname = $("#sname").val();
+    var age = $("#age").val();
+    var country = $("#country").val();
     var city = $("#city").val();
     var street = $("#street").val();
     var emailCheck = (/[^\s@]+@[^\s@]+\.[^\s@]+/.test(email));
     event.preventDefault;
+
+    localStorage.setItem('storageLogin', login);
+    localStorage.setItem('storageEmail', email);
+    localStorage.setItem('storagePassoword', password);
+    localStorage.setItem('storageName', name);
+    localStorage.setItem('storageSname', sname);
+    localStorage.setItem('storageAge', age);
+    localStorage.setItem('storageCountry', country);
+    localStorage.setItem('storageCity', city);
+    localStorage.setItem('storageStreet', street);
     
   if ((email.length < 5) || (!emailCheck)) {
     alert("Ошибка ввода Email.");
