@@ -1,9 +1,13 @@
 $(document).ready(function(){
   var currentStep = 0;
   var step = $("form").children(".form-registration__step");
+  
+  
+  var uiStep = $("form").children(".stepwizard-step");
+  
   $(step[0]).show();
   $("a.next").click(function() {
-    if(currentStep == step.length-2) {
+    if(currentStep == step.length-1) {
       $(this).hide();
       $("form input[type=submit]").show();
     }
@@ -16,14 +20,17 @@ $(document).ready(function(){
   $("a.back").click(function() {
   if(currentStep == 1) {
     $(this).hide()
+	$(".bt" + [currentStep]).css("border", "3px solid red");
   }
   $("form input[type=submit]").hide();
+  $(".bt" + [currentStep]).css("border", "3px solid red");
   $("a.next").show();
   currentStep--;
   changeStep(currentStep);
   });
 
   function changeStep(i) {
+	$(".bt" + [i]).css("border", "3px solid green");  
     $(step).hide();
     $(step[i]).show();
   }
