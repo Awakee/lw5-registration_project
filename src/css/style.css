@@ -71,3 +71,7 @@ body {
   font-size: 12px;
   border-radius: 8px;
 }
+
+.label_success{
+    font-size: 40px;
+}
