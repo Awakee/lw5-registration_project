@@ -6,7 +6,7 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 var paths = {
-  html:['index.html'],
+  html:['src/index.html'],
   css:['src/css/style.css'],
   script:['src/js/registration.js']  
 };
@@ -53,7 +53,7 @@ gulp.task('mincss', function() {
 gulp.task('browserSync', function() {
   browserSync({
   server: {
-  baseDir: "./"
+  baseDir: "src/"
   },
   port: 8080,
   open: true,
