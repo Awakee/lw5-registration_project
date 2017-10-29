@@ -11,7 +11,7 @@ var paths = {
   script:['src/js/registration.js']  
 };
 
-gulp.task('default', ['watcher', 'browserSync']);
+gulp.task('dev', ['watcher', 'browserSync']);
 gulp.task('build', ['minjs', 'mincss']);
 
 gulp.task('css', function(){
