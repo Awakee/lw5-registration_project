@@ -1,70 +1,83 @@
 $(document).ready(function() {
   var step = $('.form-registration').children('.form-registration__step');
   function currentStep() {
-    var stepReg = localStorage.getItem('regStep');
+    var stepReg = sessionStorage.getItem('regStep');
     if ((stepReg == null ) || (stepReg == '0')) {
       $(step[0]).show();
-      $('.bt1').addClass('btn-warning');
-      $('.bt2').prop('disabled', true);
-      $('.bt3').prop('disabled', true);
+      $('.step1').addClass('btn-warning');
+      $('.step2').prop('disabled', true);
+      $('.step3').prop('disabled', true);
     }
-    if (stepReg == '1') {
-      $(step[1]).show();
-      $('.bt1').addClass('btn-success');
-      $('.bt1').removeClass('btn-warning');
-      $('.bt2').addClass('btn-warning');
-      $('.bt2').prop('disabled', false);
-      $('.bt3').prop('disabled', true);
-    }
-    if (stepReg == '2') {
-      $(step[2]).show();
-      $('.bt1').addClass('btn-success');
-      $('.bt2').addClass('btn-success');
-      $('.bt2').removeClass('btn-warning');
-      $('.bt3').addClass('btn-warning');
-      $('.bt3').prop('disabled', false);
-    }
-    if (stepReg == '3') {
-      $(step[3]).show();
-      $('.stepwizard').hide();
+    switch (stepReg) {
+      case '1':
+        $(step[1]).show();
+        $('.step1').addClass('btn-success');
+        $('.step1').removeClass('btn-warning');
+        $('.step2').addClass('btn-warning');
+        $('.step2').prop('disabled', false);
+        $('.step3').prop('disabled', true);
+        break;
+      case '2':
+        $(step[2]).show();
+        $('.step1').addClass('btn-success');
+        $('.step2').addClass('btn-success');
+        $('.step2').removeClass('btn-warning');
+        $('.step3').addClass('btn-warning');
+        $('.step3').prop('disabled', false);
+        break;
+      case '3':
+        $(step[3]).show();
+        $('.stepwizard').hide();
+      default:
+        $(step[0]).show();
+        $('.step1').addClass('btn-warning');
+        $('.step2').prop('disabled', true);
+        $('.step3').prop('disabled', true);
     }
   };
-
-  login = $('#login').val(sessionStorage.getItem('storageLogin'));
-  email = $('#email').val(sessionStorage.getItem('storageEmail'));
-  password = $('#password').val(sessionStorage.getItem('storagePassword'));
-  name = $('#name').val(sessionStorage.getItem('storageName'));
-  sname = $('#sname').val(sessionStorage.getItem('storageSname'));
-  age = $('#age').val(sessionStorage.getItem('storageAge'));
-  country = $('#country').val(sessionStorage.getItem('storageCountry'));
-  city = $('#city').val(sessionStorage.getItem('storageCity'));
-  street = $('#street').val(sessionStorage.getItem('storageStreet'));
-
-  $('.bt1').click(function() {
+  
+  var storage = {
+    step1: {
+      sLogin: '',
+      sPassword: '',
+      sEmail: ''
+    },
+    step2: {
+      sName: '',
+      sSname: '',
+      sAge: ''
+    },
+    step3: {
+      sCountry: '',
+      sCity: '',
+      sSteet: ''
+    }
+  };
+  $('.step1').click(function() {
     $(step[0]).show();
     $(step[1]).hide();
     $(step[2]).hide();
-    login = $('#login').val(sessionStorage.getItem('storageLogin'));
-    email = $('#email').val(sessionStorage.getItem('storageEmail'));
-    password = $('#password').val(sessionStorage.getItem('storagePassword'));
+    login = parse.step1.sLogin;
+    email = parse.step1.sEmail;
+    password = parse.step1.sPassword;
   });
 
-  $('.bt2').click(function() {
+  $('.step2').click(function() {
     $(step[1]).show();
     $(step[0]).hide();
     $(step[2]).hide();
-    name = $('#name').val(sessionStorage.getItem('storageName'));
-    sname = $('#sname').val(sessionStorage.getItem('storageSname'));
-    age = $('#age').val(sessionStorage.getItem('storageAge'));
+    name = parse.step2.sName;
+    sname = parse.step2.sSname;
+    age = parse.step2.sAge;
   });
 
-  $('.bt3').click(function() {
+  $('.step3').click(function() {
     $(step[2]).show();
     $(step[1]).hide();
     $(step[0]).hide();
-    country = $('#country').val(sessionStorage.getItem('storageCountry'));
-    city = $('#city').val(sessionStorage.getItem('storageCity'));
-    street = $('#street').val(sessionStorage.getItem('storageStreet'));
+    country = parse.step3.sCountry;
+    city = parse.step3.sCity;
+    street = parse.step3.sStreet;
   });
 
   currentStep();
@@ -74,6 +87,7 @@ $(document).ready(function() {
   function lightningReset(item) {
     $(item).css('border', '');
   }
+
   $('#form-reg_step1').submit(function(event) {
     var login = $('#login').val();
     var email = $('#email').val();
@@ -83,40 +97,38 @@ $(document).ready(function() {
     if ((login.length < 3) || (login.length == '')) {
       alert('Ошибка ввода логина');
       lightningRed('#login');
-      $('.bt1').addClass('btn-danger');
+      $('.step1').addClass('btn-danger');
       return;
     }
     if ((email.length < 5) || (!emailCheck)) {
       alert('Ошибка ввода Email.');
       lightningRed('#email');
-      $('.bt1').addClass('btn-danger');
+      $('.step1').addClass('btn-danger');
       return;
     }
     if ((password.length < 6) || (password == '')) {
       alert('Ошибка ввода пароля');
       lightningRed('#password');
-      $('.bt1').addClass('btn-danger');
+      $('.step1').addClass('btn-danger');
       return;
     }
-
+    storage.step1.sLogin = login;
+    storage.step1.sEmail = email;
+    storage.step1.sPassword = password;
+    var str = JSON.stringify(storage);
+    sessionStorage.setItem('storage', str);
     lightningReset('#login');
     lightningReset('#email');
     lightningReset('#password');
-
-    login = $('#login').val(sessionStorage.setItem('storageLogin', login));
-    email = $('#email').val(sessionStorage.setItem('storageEmail', email));
-    password = $('#password').val(sessionStorage.setItem('storagePassword', password));
-    $('.bt1').removeClass('btn-danger');
-    $('.bt1').addClass('btn-success');
-    $('.bt1').removeClass('btn-warning');
-    $('.bt2').addClass('btn-warning');
-    $('.bt2').prop('disabled', false);
+    $('.step1').removeClass('btn-danger');
+    $('.step1').addClass('btn-success');
+    $('.step1').removeClass('btn-warning');
+    $('.step2').addClass('btn-warning');
+    $('.step2').prop('disabled', false);
     $(step[1]).show();
     $(step[0]).hide();
-
     registrationStep = 1;
-    localStorage.setItem('regStep', registrationStep);
-
+    sessionStorage.setItem('regStep', registrationStep);
   });
 
   $('#form-reg_step2').submit(function(event) {
@@ -124,42 +136,42 @@ $(document).ready(function() {
     var sname = $('#sname').val();
     var age = $('#age').val();
     event.preventDefault();
-
     if (name.length == '') {
       alert('Ошибка ввода имени');
-      $('.bt2').addClass('btn-danger');
+      $('.step2').addClass('btn-danger');
       lightningRed('#name');
       return;
     }
 
     if (sname.length == '') {
       alert('Ошибка ввода фамилии');
-      $('.bt2').addClass('btn-danger');
+      $('.step2').addClass('btn-danger');
       lightningRed('#sname');
       return;
     }
 
     if (age.length == '') {
-      $('.bt2').addClass('btn-danger');
+      $('.step2').addClass('btn-danger');
       alert('Ошибка ввода возраста');
       lightningRed('#age');
       return;
     }
 
+    storage.step2.sName = name;
+    storage.step2.sSname = sname;
+    storage.step2.sAge = age;
+    var str = JSON.stringify(storage);
+    sessionStorage.setItem('storage', str);
     registrationStep = 2;
-    localStorage.setItem('regStep', registrationStep);
-
-    name = $('#name').val(sessionStorage.setItem('storageName', name));
-    sname = $('#sname').val(sessionStorage.setItem('storageSname', sname));
-    age = $('#age').val(sessionStorage.setItem('storageAge', age));
+    sessionStorage.setItem('regStep', registrationStep);
     lightningReset('#sname');
     lightningReset('#name');
     lightningReset('#age');
-    $('.bt2').removeClass('btn-danger');
-    $('.bt2').addClass('btn-success'); 
-    $('.bt2').removeClass('btn-warning');
-    $('.bt3').addClass('btn-warning');
-    $('.bt3').prop('disabled', false);
+    $('.step2').removeClass('btn-danger');
+    $('.step2').addClass('btn-success'); 
+    $('.step2').removeClass('btn-warning');
+    $('.step3').addClass('btn-warning');
+    $('.step3').prop('disabled', false);
     $(step[2]).show();
     $(step[1]).hide();
   });
@@ -169,38 +181,40 @@ $(document).ready(function() {
     var city = $('#city').val();
     var street = $('#street').val();
     event.preventDefault();
-
     if (country.length == '') {
       alert('Ошибка ввода страны');
-      $('.bt3').addClass('btn-danger');
+      $('.step3').addClass('btn-danger');
       lightningRed('#country');
       return;
     }
     if (city.length == '') {
       alert('Ошибка ввода города');
-      $('.bt3').addClass('btn-danger');
+      $('.step3').addClass('btn-danger');
       lightningRed('#city');
       return;
     }
     if (street.length == '') {
       alert('Ошибка ввода улицы');
-      $('.bt3').addClass('btn-danger');
+      $('.step3').addClass('btn-danger');
       lightningRed('#street');
       return;
     }  
+    storage.step3.sCountry = country;
+    storage.step3.sCity = city;
+    storage.step3.sSteet = street;
+    var str = JSON.stringify(storage);
+    sessionStorage.setItem('storage', str);
     registrationStep = 3;
-    localStorage.setItem('regStep', registrationStep);
-    country = $('#country').val(sessionStorage.setItem('storageCountry', country));
-    city = $('#city').val(sessionStorage.setItem('storageCity', city));
-    street = $('#street').val(sessionStorage.setItem('storageStreet', street));
     lightningReset('#country');
     lightningReset('#city');
     lightningReset('#street');
-    $('.bt3').removeClass('btn-danger');
-    $('.bt3').addClass('btn-success');
-    $('.bt3').removeClass('btn-warning');
+    $('.step3').removeClass('btn-danger');
+    $('.step3').addClass('btn-success');
+    $('.step3').removeClass('btn-warning');
     $('.stepwizard').hide();
     $(step[2]).hide();
     $(step[3]).show();
+    sessionStorage.removeItem('storage');
+    sessionStorage.removeItem('regStep');
   });
 });
