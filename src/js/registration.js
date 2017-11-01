@@ -170,7 +170,7 @@ $(document).ready(function() {
     lightningReset('#name');
     lightningReset('#age');
     $('.step2').removeClass('btn-danger');
-    $('.step2').addClass('btn-success'); 
+    $('.step2').addClass('btn-success');
     $('.step2').removeClass('btn-warning');
     $('.step3').addClass('btn-warning');
     $('.step3').prop('disabled', false);

@@ -79,3 +79,7 @@ body {
 .steps{
     cursor: pointer;
 }
+
+.bt{
+    margin-top: 10px;
+}

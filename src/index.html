@@ -12,12 +12,13 @@
   </head>
   <body>
     <div class="container">
-	    <div class="stepwizard">
-        <div class="stepwizard-row">
-          <div class="stepwizard-step">
-            <button type="button" class="btn btn-primary btn-circle steps step1">1</button>
-            <p>Логин</p>
-          </div>
+      <div class="row">
+        <div class="stepwizard col-xs-10 col-sm-7 col-md-11">
+          <div class="stepwizard-row col-xs-10 col-sm-7 col-md-11">
+            <div class="stepwizard-step ">
+              <button type="button" class="btn btn-primary btn-circle steps step1">1</button>
+              <p>Логин</p>
+            </div>
           <div class="stepwizard-step">
             <button type="button" class="btn btn-primary btn-circle steps step2">2</button>
             <p>Имя</p>
@@ -28,57 +29,58 @@
           </div> 
         </div>
       </div> 
-    <div class="form-registration">
-      <div class="form-registration__step">
-        <form id="form-reg_step1">
-		      <div class="titles"><label>Логин</label>
-            <input type="text" class="form-control" id="login"  placeholder="Логин">
-          </div>
-		      <div class="titles"><label>Эл. почта</label>
-            <input type="text" class="form-control" id="email"  placeholder="user@mail.ru">
-          </div>
-		      <div class="titles"><label>Пароль</label>
-            <input type="password" class="form-control" id="password" placeholder="Пароль">
-          </div>
-          <input type="submit" class="btn btn-primary" value="Далее">
-        </form>
-      </div>       
-      <div class="form-registration__step">
-        <form id="form-reg_step2">
-		      <div class="titles"><label>Имя</label>
-            <input type="text" class="form-control" id="name"  placeholder="Иван">
-          </div>
-		      <div class="titles"><label>Фамилия</label>
-            <input type="text" class="form-control" id="sname"  placeholder="Иванов">
-          </div>
-		      <div class="titles"><label>Возраст</label>
-            <input type="text" class="form-control" id="age"  placeholder="18">
-           </div>
-          <input type="submit" class="btn btn-primary" value="Далее">
-        </form>
-      </div>
-      <div class="form-registration__step">
-        <form id="form-reg_step3">
-		      <div class="titles"><label>Страна</label>
-            <input type="text" class="form-control" id="country"  placeholder="Россия">
-          </div>
-		      <div class="titles"><label>Город</label>
-            <input type="text" class="form-control" id="city"  placeholder="Йошкар-Ола">
-          </div>
-		       <div class="titles"><label>Улица</label>
-            <input type="text" class="form-control" id="street"  placeholder="ул. Красноармейская">
-          </div>
-          <input type="submit" class="btn btn-primary" value="Далее">
-        </form>
-      </div>
-      <div class="form-registration__step">
-        <div class="form-registration__success">
-          <label class="label_success">Поздравляем! Вы успешно прошли регистрацию!</label>
-          <a href=javascript:document.location.reload() class="btn btn-primary">ОК</a>
+      <div class="form-registration">
+        <div class="form-registration__step">
+          <form id="form-reg_step1">
+            <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Логин</label>
+              <input type="text" class="form-control" id="login"  placeholder="Логин">
+            </div>
+            <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Эл. почта</label>
+              <input type="text" class="form-control" id="email"  placeholder="user@mail.ru">
+            </div>
+            <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Пароль</label>
+              <input type="password" class="form-control" id="password" placeholder="Пароль">
+              <input type="submit" class="bt btn btn-primary" value="Далее">
+            </div>
+          </form>
+        </div>       
+        <div class="form-registration__step">
+          <form id="form-reg_step2">
+            <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Имя</label>
+              <input type="text" class="form-control" id="name"  placeholder="Иван">
+            </div>
+            <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Фамилия</label>
+              <input type="text" class="form-control" id="sname"  placeholder="Иванов">
+            </div>
+             <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Возраст</label>
+               <input type="text" class="form-control" id="age"  placeholder="18">
+               <input type="submit" class="bt btn btn-primary new1" value="Далее">
+            </div>
+          </form>
+        </div>
+        <div class="form-registration__step">
+          <form id="form-reg_step3">
+            <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Страна</label>
+              <input type="text col-xs-10 col-sm-7 col-md-12" class="form-control" id="country"  placeholder="Россия">
+            </div>
+            <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Город</label>
+              <input type="text" class="form-control" id="city"  placeholder="Йошкар-Ола">
+            </div>
+            <div class="titles col-xs-10 col-sm-7 col-md-12"><label>Улица</label>
+              <input type="text" class="form-control" id="street"  placeholder="ул. Красноармейская">
+              <input type="submit" class="bt btn btn-primary" value="Далее">
+            </div>
+          </form>
+        </div>
+        <div class="form-registration__step">
+          <div class="form-registration__success">
+            <label class="label_success">Поздравляем! Вы успешно прошли регистрацию!</label>
+            <a href=javascript:document.location.reload() class="btn btn-primary">ОК</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="js/registration.js"></script>
 </html>
