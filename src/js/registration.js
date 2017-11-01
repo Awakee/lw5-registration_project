@@ -38,19 +38,19 @@ $(document).ready(function() {
   
   var storage = {
     step1: {
-      sLogin: '',
-      sPassword: '',
-      sEmail: ''
+      sLogin: null,
+      sPassword: null,
+      sEmail: null
     },
     step2: {
-      sName: '',
-      sSname: '',
-      sAge: ''
+      sName: null,
+      sSname: null,
+      sAge: null
     },
     step3: {
-      sCountry: '',
-      sCity: '',
-      sSteet: ''
+      sCountry: null,
+      sCity: null,
+      sSteet: null
     }
   };
   $('.step1').click(function() {
@@ -93,6 +93,7 @@ $(document).ready(function() {
     var email = $('#email').val();
     var password = $('#password').val();
     var emailCheck = (/[^\s@]+@[^\s@]+\.[^\s@]+/.test(email));
+      
     event.preventDefault();
     if ((login.length < 3) || (login.length == '')) {
       alert('Ошибка ввода логина');
@@ -135,22 +136,23 @@ $(document).ready(function() {
     var name = $('#name').val();
     var sname = $('#sname').val();
     var age = $('#age').val();
+    var ageCheck = (/[a-zA-Z]/.test(age));
     event.preventDefault();
-    if (name.length == '') {
+    if ((name.length == '') || (name.length < 2)) {
       alert('Ошибка ввода имени');
       $('.step2').addClass('btn-danger');
       lightningRed('#name');
       return;
     }
 
-    if (sname.length == '') {
+    if ((sname.length == '') || (sname.length < 2)) {
       alert('Ошибка ввода фамилии');
       $('.step2').addClass('btn-danger');
       lightningRed('#sname');
       return;
     }
 
-    if (age.length == '') {
+    if ((age.length == '') || (ageCheck)) {
       $('.step2').addClass('btn-danger');
       alert('Ошибка ввода возраста');
       lightningRed('#age');
@@ -181,19 +183,19 @@ $(document).ready(function() {
     var city = $('#city').val();
     var street = $('#street').val();
     event.preventDefault();
-    if (country.length == '') {
+    if ((country.length == '') || (country.length < 3)) {
       alert('Ошибка ввода страны');
       $('.step3').addClass('btn-danger');
       lightningRed('#country');
       return;
     }
-    if (city.length == '') {
+    if ((city.length == '') || (city.length < 3)) {
       alert('Ошибка ввода города');
       $('.step3').addClass('btn-danger');
       lightningRed('#city');
       return;
     }
-    if (street.length == '') {
+    if ((street.length == '') || (street.length < 3)) {
       alert('Ошибка ввода улицы');
       $('.step3').addClass('btn-danger');
       lightningRed('#street');
